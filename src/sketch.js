@@ -1,4 +1,6 @@
-let player = new Player(0, 0);
+let entities = [
+	new Player(0, 0),
+];
 
 function setup() {
 	createCanvas(400, 400);
@@ -6,4 +8,8 @@ function setup() {
 
 function draw() {
 	background(220);
+
+	for(let i = 0; i < entities.length; i++) {
+		entities[i].draw();
+	}
 }
