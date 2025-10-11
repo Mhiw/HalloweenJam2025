@@ -10,6 +10,7 @@ function draw() {
 	background(220);
 
 	for(let i = 0; i < entities.length; i++) {
+		entities[i].update();
 		entities[i].draw();
 	}
 }
