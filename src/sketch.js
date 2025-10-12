@@ -12,6 +12,7 @@ function setup() {
 	preloadAssets();
 
 	player = new Player(50, 50, playerImg);
+	gun = new Gun(player.x+10, player.y+10, gunImg);
 	entities.push(player);
 }
 
@@ -30,6 +31,7 @@ function draw() {
 	}
 
 	player.update();
+	gun.update();
 }
 
 function mouseClicked() {
