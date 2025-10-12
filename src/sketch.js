@@ -1,10 +1,20 @@
 let entities = [
 	new Player(0, 0),
-	new Player(16, 2),
 ];
+
+let walls = [
+	new Collider(-16, 0, 16, 400, "Static", null),
+	new Collider(400, 0, 16, 400, "Static", null),
+]
 
 function setup() {
 	createCanvas(400, 400);
+}
+
+function spawnEnemies(count) {
+	for(let i = 0; i < count; i++) {
+		entities.push(new Enemy(Math.random() * 400, Math.random() * 400));
+	}
 }
 
 function draw() {
@@ -16,5 +26,6 @@ function draw() {
 }
 
 function mouseClicked() {
-	
+	let player = entities[0];
+	entities.push(new Bullet(player.x + 32, player.y, 1, 0));
 }
