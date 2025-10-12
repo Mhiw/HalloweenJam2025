@@ -1,12 +1,17 @@
 class Player extends Entity {
 	constructor(x, y) {
 		super(x, y);
+		this.collider = new Collider(x, y, 16, 16, function() {
+			console.log("Collision");
+		});
 	}
 
 	update() {
-		if(keyIsDown(LEFT_ARROW)) { this.velocity(-1, 0) }
-		if(keyIsDown(RIGHT_ARROW)) { this.velocity(1, 0) }
-		if(keyIsDown(UP_ARROW)) { this.velocity(0, -1) }
-		if(keyIsDown(DOWN_ARROW)) { this.velocity(0, 1) }
+		this.collider.x = this.x;
+		this.collider.y = this.y;
+
+		this.collider.checkCollision();
+		this.move();
+		this.draw();
 	}
 }
