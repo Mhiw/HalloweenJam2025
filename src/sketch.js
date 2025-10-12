@@ -1,5 +1,6 @@
 let entities = [
 	new Player(0, 0),
+	new Player(16, 2),
 ];
 
 function setup() {
@@ -11,6 +12,9 @@ function draw() {
 
 	for(let i = 0; i < entities.length; i++) {
 		entities[i].update();
-		entities[i].draw();
 	}
+}
+
+function mouseClicked() {
+	
 }
