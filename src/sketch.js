@@ -1,5 +1,5 @@
 let entities = [
-	new Player(0, 0),
+	new Player(200, 200),
 ];
 
 let walls = [
@@ -27,5 +27,8 @@ function draw() {
 
 function mouseClicked() {
 	let player = entities[0];
-	entities.push(new Bullet(player.x + 32, player.y, 1, 0));
+	let dx = mouseX - player.x;
+	let dy = mouseY - player.x;
+	let angle = Math.atan2(dy, dx);
+	entities.push(new Bullet(player.x, player.y, cos(angle), sin(angle)));
 }

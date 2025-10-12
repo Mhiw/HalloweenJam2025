@@ -25,6 +25,5 @@ class Bullet extends Entity {
 	move() {
 		this.x += this.velocity.dx * this.speed * deltaTime;
 		this.y += this.velocity.dy * this.speed * deltaTime;
-		console.log(this.velocity.dx);
 	}
 }
