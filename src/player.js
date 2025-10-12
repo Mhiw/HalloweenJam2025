@@ -10,8 +10,11 @@ class Player extends Entity {
 		this.collider.x = this.x;
 		this.collider.y = this.y;
 
-		this.collider.checkCollision();
-		this.move();
+		if(this.collider.checkCollision() !== true) {
+			this.move();
+		}
+		
+		fill(color(255, 255, 255))
 		this.draw();
 	}
 }
