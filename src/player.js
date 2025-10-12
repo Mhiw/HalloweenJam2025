@@ -10,7 +10,7 @@ class Player extends Entity {
 		this.collider.x = this.x;
 		this.collider.y = this.y;
 
-		if(this.collider.checkCollision("*") !== true) {
+		if(this.collider.checkCollision(["*"]) !== true) {
 			this.move();
 		}
 		

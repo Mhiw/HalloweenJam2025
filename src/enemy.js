@@ -2,7 +2,7 @@ class Enemy extends Entity {
 	constructor(x, y) {
 		super(x, y);
 		this.collider = new Collider(x, y, 16, 16, "Enemy", function() {
-			console.log("Collision");
+			//console.log("Collision");
 		});
 		this.healthbar = new Healthbar(100, function() {
 			console.log("Dead! :(");

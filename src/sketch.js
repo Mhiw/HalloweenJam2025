@@ -1,5 +1,6 @@
 let entities = [
 	new Player(200, 200),
+	new Player(0, 0),
 ];
 
 let walls = [
@@ -8,6 +9,7 @@ let walls = [
 ]
 
 function setup() {
+	//spawnEnemies(10);
 	createCanvas(400, 400);
 }
 
@@ -30,5 +32,7 @@ function mouseClicked() {
 	let dx = mouseX - player.x;
 	let dy = mouseY - player.x;
 	let angle = Math.atan2(dy, dx);
-	entities.push(new Bullet(player.x, player.y, cos(angle), sin(angle)));
+	dx = cos(angle);
+	dy = sin(angle);
+	entities.push(new Bullet(player.x + dx * 50, player.y + dy * 50, dx, dy));
 }
