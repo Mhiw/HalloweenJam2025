@@ -2,7 +2,7 @@ class Bullet extends Entity {
 	constructor(x, y, dx, dy) {
 		super(x, y);
 		this.collider = new Collider(x, y, 16, 16, "Bullet", function() {
-			//console.log("Collision");
+
 		});
 		this.velocity = new Velocity(dx, dy);
 		this.speed = 0.1;
@@ -14,8 +14,9 @@ class Bullet extends Entity {
 
 
 		if(this.collider.checkCollision(["Enemy", "Player", "Static"]) === true) {
+			this.x += this.velocity.dx * -1;
+			this.y += this.velocity.dy * -1;
 			this.velocity.invertVelocity(true, true);
-			//console.log(this.x, this.y);
 		}
 		
 		this.move();

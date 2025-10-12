@@ -24,10 +24,10 @@ class Collider {
 			}
 			
 			if(foundTag === true && this !== collider) {
-				if(this.x + this.w > collider.x
-					&& this.x < collider.x + collider.w
-					&& this.y + this.h > collider.y
-					&& this.y < collider.y + collider.h) {
+				if(this.x + this.w >= collider.x
+					&& this.x <= collider.x + collider.w
+					&& this.y + this.h >= collider.y
+					&& this.y <= collider.y + collider.h) {
 					if(this.onCollision !== null) {
 						this.onCollision();
 					}

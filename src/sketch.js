@@ -1,11 +1,10 @@
 let entities = [
 	new Player(200, 200),
-	new Player(0, 0),
 ];
 
 let walls = [
-	new Collider(-16, 0, 16, 400, "Static", null),
-	new Collider(400, 0, 16, 400, "Static", null),
+	new Collider(0, 0, 1, 400, "Static", null),
+	new Collider(0, 0, 400, 1, "Static", null),
 ]
 
 function setup() {
@@ -20,7 +19,7 @@ function spawnEnemies(count) {
 }
 
 function draw() {
-	background(220);
+	background(20);
 
 	for(let i = 0; i < entities.length; i++) {
 		entities[i].update();
@@ -34,5 +33,6 @@ function mouseClicked() {
 	let angle = Math.atan2(dy, dx);
 	dx = cos(angle);
 	dy = sin(angle);
+	
 	entities.push(new Bullet(player.x + dx * 50, player.y + dy * 50, dx, dy));
 }
