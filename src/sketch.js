@@ -3,8 +3,8 @@ let entities = [
 ];
 
 let walls = [
-	new Collider(-16, 0, 16, 400, null),
-	new Collider(400, 0, 16, 400, null),
+	new Collider(-16, 0, 16, 400, "Static", null),
+	new Collider(400, 0, 16, 400, "Static", null),
 ]
 
 function setup() {

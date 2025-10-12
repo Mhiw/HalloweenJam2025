@@ -1,7 +1,7 @@
 class Velocity {
-	constructor() {
-		this.dx = 0;
-		this.dy = 0;
+	constructor(dx, dy) {
+		this.dx = dx;
+		this.dy = dy;
 	}
 
 	invertVelocity(flipX, flipY) {

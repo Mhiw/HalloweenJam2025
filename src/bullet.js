@@ -1,11 +1,11 @@
 class Bullet extends Entity {
 	constructor(x, y, dx, dy) {
 		super(x, y);
-		this.collider = new Collider(x, y, 16, 16, function() {
+		this.collider = new Collider(x, y, 16, 16, "Bullet", function() {
 			console.log("Collision");
 		});
 		this.velocity = new Velocity(dx, dy);
-		this.speed = 100;
+		this.speed = 1;
 	}
 
 	update() {
@@ -25,7 +25,6 @@ class Bullet extends Entity {
 	move() {
 		this.x += this.velocity.dx * this.speed * deltaTime;
 		this.y += this.velocity.dy * this.speed * deltaTime;
-		this.dx = 0;
-		this.dy = 0;
+		console.log(this.velocity.dx);
 	}
 }

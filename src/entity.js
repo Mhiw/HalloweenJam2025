@@ -4,7 +4,7 @@ class Entity {
 		this.y = y;
 		this.dx = 0;
 		this.dy = 0;
-		this.speed = 100;
+		this.speed = 1;
 	}
 
 	update() {
@@ -19,8 +19,8 @@ class Entity {
 	move() {
 		this.x += this.dx * this.speed * deltaTime;
 		this.y += this.dy * this.speed * deltaTime;
-		this.dx = 0;
-		this.dy = 0;
+		//this.dx = 0;
+		//this.dy = 0;
 	}
 
 	velocity(dx, dy) {

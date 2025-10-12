@@ -1,7 +1,7 @@
 class Player extends Entity {
 	constructor(x, y) {
 		super(x, y);
-		this.collider = new Collider(x, y, 16, 16, function() {
+		this.collider = new Collider(x, y, 16, 16, "Player", function() {
 			console.log("Collision");
 		});
 	}
