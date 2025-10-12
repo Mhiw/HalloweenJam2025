@@ -1,6 +1,5 @@
-let entities = [
-	new Player(0, 0),
-];
+let entities = [];
+let player;
 
 let walls = [
 	new Collider(-16, 0, 16, 400, "Static", null),
@@ -8,7 +7,12 @@ let walls = [
 ]
 
 function setup() {
-	createCanvas(400, 400);
+	createCanvas(640*SCALE, 360*SCALE);
+	noSmooth();
+	preloadAssets();
+
+	player = new Player(50, 50, playerImg);
+	entities.push(player);
 }
 
 function spawnEnemies(count) {
@@ -19,13 +23,17 @@ function spawnEnemies(count) {
 
 function draw() {
 	background(220);
+	scale(SCALE)
 
 	for(let i = 0; i < entities.length; i++) {
 		entities[i].update();
 	}
+
+	player.update();
 }
 
 function mouseClicked() {
 	let player = entities[0];
-	entities.push(new Bullet(player.x + 32, player.y, 1, 0));
+	scale(SCALE);
+	entities.push(new Bullet(player.x + 16, player.y, 1, 0, bulletImg));
 }

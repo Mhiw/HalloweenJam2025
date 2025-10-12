@@ -1,7 +1,8 @@
 class Bullet extends Entity {
-	constructor(x, y, dx, dy) {
+	constructor(x, y, dx, dy, img) {
 		super(x, y);
-		this.collider = new Collider(x, y, 16, 16, "Bullet", function() {
+		this.img = img
+		this.collider = new Collider(x, y, 16, 8, "Bullet", function() {
 			console.log("Collision");
 		});
 		this.velocity = new Velocity(dx, dy);
@@ -18,8 +19,12 @@ class Bullet extends Entity {
 			this.velocity.invertVelocity(true, true);
 		}
 		
-		fill(color(0, 255, 0))
-		this.draw();
+		imageMode(CENTER);
+
+		const w = this.img.width * 2;
+		const h = this.img.height * 2;
+
+		image(this.img, this.x, this.y, w, h);
 	}
 
 	move() {
