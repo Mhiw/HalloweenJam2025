@@ -14,7 +14,7 @@ class Bullet extends Entity {
 
 		this.move();
 
-		if(this.collider.checkCollision() !== true) {
+		if(this.collider.checkCollision("*") !== true) {
 			this.velocity.invertVelocity(true, true);
 		}
 		
