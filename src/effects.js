@@ -1,5 +1,3 @@
-
-
 let shakeDuration = 0;
 let shakeMagnitude = 0;
 

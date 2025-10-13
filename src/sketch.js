@@ -33,7 +33,6 @@ function draw() {
 	push();
 	applyCameraShake();
 
-
 	// Temporärt, ville mest bara kolla om camera shaken faktiskt fungerade, vi kanske inte äns ska ha kvar den lol. 
 	stroke(80);
 	for (let x = 0; x < width / SCALE; x += 16) {
