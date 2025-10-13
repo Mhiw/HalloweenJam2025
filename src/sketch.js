@@ -53,6 +53,7 @@ function mouseClicked() {
 	startCameraShake(200, 3);
 	let player = entities[0];
 	scale(SCALE);
+	
 	let dx = mouseX - player.x;
 	let dy = mouseY - player.x;
 	let angle = Math.atan2(dy, dx);

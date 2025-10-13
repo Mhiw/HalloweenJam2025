@@ -24,12 +24,19 @@ class Bullet extends Entity {
 		const w = this.img.width * 2;
 		const h = this.img.height * 2;
 
+		let angle = atan2(this.velocity.dy, this.velocity.dx);
+
+		push();
+		
+		translate(this.x, this.y);
+		rotate(angle);
 		image(this.img, this.x, this.y, w, h);
+		
+		pop();
 	}
 
 	move() {
 		this.x += this.velocity.dx * this.speed * deltaTime;
 		this.y += this.velocity.dy * this.speed * deltaTime;
-		console.log(this.velocity.dx);
 	}
 }
