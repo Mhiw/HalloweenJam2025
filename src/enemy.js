@@ -1,8 +1,8 @@
 class Enemy extends Entity {
 	constructor(x, y) {
 		super(x, y);
-		this.collider = new Collider(x, y, 16, 16, function() {
-			console.log("Collision");
+		this.collider = new Collider(x, y, 16, 16, "Enemy", function() {
+			//console.log("Collision");
 		});
 		this.healthbar = new Healthbar(100, function() {
 			console.log("Dead! :(");
@@ -13,7 +13,7 @@ class Enemy extends Entity {
 		this.collider.x = this.x;
 		this.collider.y = this.y;
 
-		if(this.collider.checkCollision() !== true) {
+		if(this.collider.checkCollision(["Player", "Static", "Bullet"]) !== true) {
 			this.move();
 		}
 		
