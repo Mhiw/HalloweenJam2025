@@ -53,5 +53,8 @@ function mouseClicked() {
 	startCameraShake(200, 3);
 	let player = entities[0];
 	scale(SCALE);
-	entities.push(new Bullet(player.x + 16, player.y, 1, 0, bulletImg));
+	let dx = mouseX - player.x;
+	let dy = mouseY - player.x;
+	let angle = Math.atan2(dy, dx);
+	entities.push(new Bullet(player.x, player.y, cos(angle), sin(angle), bulletImg));
 }
