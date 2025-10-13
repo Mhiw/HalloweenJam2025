@@ -30,12 +30,28 @@ function draw() {
 		entities[i].update();
 	}
 
+	push();
+	applyCameraShake();
+
+
+	// Temporärt, ville mest bara kolla om camera shaken faktiskt fungerade, vi kanske inte äns ska ha kvar den lol. 
+	stroke(80);
+	for (let x = 0; x < width / SCALE; x += 16) {
+		line(x, 0, x, height / SCALE);
+	}
+	for (let y = 0; y < height / SCALE; y += 16) {
+		line(0, y, width / SCALE, y);
+	}
+	
 	player.update();
 	gun.followPlayer(player.x + 10, player.y + 10);
 	gun.update();
+
+	pop();
 }
 
 function mouseClicked() {
+	startCameraShake(200, 3);
 	let player = entities[0];
 	scale(SCALE);
 	entities.push(new Bullet(player.x + 16, player.y, 1, 0, bulletImg));
