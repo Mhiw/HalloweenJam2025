@@ -30,6 +30,7 @@ class Bullet extends Entity {
 		
 		translate(this.x, this.y);
 		rotate(angle);
+		translate(-this.x, -this.y);
 		image(this.img, this.x, this.y, w, h);
 		
 		pop();
