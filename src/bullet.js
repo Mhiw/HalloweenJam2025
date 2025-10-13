@@ -16,11 +16,11 @@ class Bullet extends Entity {
 		this.move();
 
 		if(this.collider.checkCollision(["Static"]) === true) {
+			this.x += this.velocity.dx * -10;
+			this.y += this.velocity.dy * -10;
 			this.velocity.invertVelocity(true, true);
 		}
 		
-		imageMode(CENTER);
-
 		const w = this.img.width * 2;
 		const h = this.img.height * 2;
 
@@ -29,6 +29,7 @@ class Bullet extends Entity {
 		push();
 		
 		translate(this.x, this.y);
+		imageMode(CENTER);
 		rotate(angle);
 		translate(-this.x, -this.y);
 		image(this.img, this.x, this.y, w, h);
