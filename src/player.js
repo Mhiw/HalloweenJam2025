@@ -47,9 +47,22 @@ class Gun {
 
     push();
     translate(this.x, this.y);
-    rotate(a);
-    imageMode(CENTER);
 
+	let flip = false;
+	if (abs(degrees(a)) > 90) {
+		flip = true;
+	}
+
+	if (flip) {
+		scale(1, -1);
+		rotate(-a);
+	}
+	
+	else {
+		rotate(a)
+	}
+
+    imageMode(CENTER);
     const w = this.img.width * SCALE;
     const h = this.img.height * SCALE;
 

@@ -23,7 +23,7 @@ function spawnEnemies(count) {
 }
 
 function draw() {
-	background(220);
+	background(39, 24, 84);
 	scale(SCALE)
 
 	for(let i = 0; i < entities.length; i++) {
