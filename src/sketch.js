@@ -31,6 +31,7 @@ function draw() {
 	}
 
 	player.update();
+	gun.followPlayer(player.x + 10, player.y + 10);
 	gun.update();
 }
 

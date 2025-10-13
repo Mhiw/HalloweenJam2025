@@ -30,20 +30,30 @@ class Gun {
     this.x = x;
     this.y = y;
     this.img = img;
+    this.offsetX = 0;
+    this.offsetY = 0;
+  }
+
+  followPlayer(px, py) {
+    this.x = px + this.offsetX;
+    this.y = py + this.offsetY;
   }
 
   update() {
+    const mx = mouseX / SCALE;
+    const my = mouseY / SCALE;
 
-    let a = atan2(mouseY - this.x, mouseX - this.y);
+    let a = atan2(my - this.y, mx - this.x);
 
     push();
     translate(this.x, this.y);
     rotate(a);
     imageMode(CENTER);
+
     const w = this.img.width * SCALE;
     const h = this.img.height * SCALE;
+
     image(this.img, 0, 0, w, h);
     pop();
   }
 }
-
