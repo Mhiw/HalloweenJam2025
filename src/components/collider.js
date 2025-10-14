@@ -11,31 +11,24 @@ class Collider {
 
 		colliders.push(this);
 	}
+}
 
-	checkCollision(tag) {
-		for(let i = 0; i < colliders.length; i++) {
-			let collider = colliders[i];
-			
-			let foundTag = false;
-			for(let j = 0; j < tag.length; j++) {
-				if(tag[i] == collider.tag || tag[i] === "*") {
-					foundTag = true;
-				}
+function updateColliders() {
+	for(let i = 0; i < colliders.length; i++) {
+		for(let j = 0; j < colliders.length; j++) {
+			if(i === j) {
+				continue;
 			}
-			
-			if(foundTag === true && this !== collider) {
-				if(this.x + this.w >= collider.x
-					&& this.x <= collider.x + collider.w
-					&& this.y + this.h >= collider.y
-					&& this.y <= collider.y + collider.h) {
-					if(this.onCollision !== null) {
-						this.onCollision();
-					}
-					if(collider.onCollision !== null) {
-						collider.onCollision();
-					}
 
-					return true;
+			let a = colliders[i];
+			let b = colliders[j];
+
+			if(a.x + a.w > b.x && a.x < b.x + b.w && a.y + a.h > b.y && a.y < b.y + b.h) {
+				if(a.onCollision !== null) {
+					a.onCollision(b.tag);
+				}
+				if(b.onCollision !== null) {
+					b.onCollision(a.tag);
 				}
 			}
 		}

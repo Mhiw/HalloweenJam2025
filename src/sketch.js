@@ -2,8 +2,8 @@ let entities = [];
 let player;
 
 let walls = [
-	new Collider(-16, 0, 16, 400, "Static", null),
-	new Collider(400, 0, 16, 400, "Static", null),
+	new Collider(350, 0, 16, 400, "Static", null),
+	new Collider(0, 0, 16, 400, "Static", null),
 ]
 
 function setup() {
@@ -34,6 +34,8 @@ function draw() {
 	for(let i = 0; i < entities.length; i++) {
 		entities[i].update();
 	}
+	
+	updateColliders();
 	
 	player.update();
 	gun.followPlayer(player.x + 10, player.y + 10);

@@ -2,8 +2,8 @@ class Bullet extends Entity {
 	constructor(x, y, dx, dy, img) {
 		super(x, y);
 		this.img = img
-		this.collider = new Collider(x, y, 16, 8, "Bullet", function() {
-			console.log("Collision");
+		this.collider = new Collider(x, y, 16, 8, "Bullet", function(tag) {
+			console.log(tag);
 		});
 		this.velocity = new Velocity(dx, dy);
 		this.speed = 1;
@@ -14,12 +14,6 @@ class Bullet extends Entity {
 		this.collider.y = this.y;
 
 		this.move();
-
-		if(this.collider.checkCollision(["Static"]) === true) {
-			this.x += this.velocity.dx * -10;
-			this.y += this.velocity.dy * -10;
-			this.velocity.invertVelocity(true, true);
-		}
 		
 		const w = this.img.width * 2;
 		const h = this.img.height * 2;

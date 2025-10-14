@@ -4,7 +4,7 @@ class Player extends Entity {
 		this.img = img;
 		this.gunImg = gunImg;
 
-		this.collider = new Collider(x, y, 16, 16, "Player", function() {
+		this.collider = new Collider(x, y, 16, 16, "Player", function(tag) {
 			//console.log("Collision");
 		});
 	}
