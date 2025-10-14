@@ -16,7 +16,7 @@ let tileMap = level1;
 function loadLevel(level) {
     tileMap = level;
 
-    // collision stuff? Not sure haha
+    // Denna funktion kan man då använda när ex. alla fiender är döda och man ska till nästa level. 
 }
 
 function drawTiles() {
