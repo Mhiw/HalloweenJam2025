@@ -1,28 +1,40 @@
 class Bullet extends Entity {
-	constructor(x, y, dx, dy) {
+	constructor(x, y, dx, dy, img) {
 		super(x, y);
-		this.collider = new Collider(x, y, 16, 16, "Bullet", function() {
-
+		this.img = img
+		this.collider = new Collider(x, y, 16, 8, "Bullet", function() {
+			console.log("Collision");
 		});
 		this.velocity = new Velocity(dx, dy);
-		this.speed = 0.1;
+		this.speed = 1;
 	}
 
 	update() {
 		this.collider.x = this.x;
 		this.collider.y = this.y;
 
+		this.move();
 
-		if(this.collider.checkCollision(["Enemy", "Player", "Static"]) === true) {
-			this.x += this.velocity.dx * -1;
-			this.y += this.velocity.dy * -1;
+		if(this.collider.checkCollision(["Static"]) === true) {
+			this.x += this.velocity.dx * -10;
+			this.y += this.velocity.dy * -10;
 			this.velocity.invertVelocity(true, true);
 		}
 		
-		this.move();
+		const w = this.img.width * 2;
+		const h = this.img.height * 2;
+
+		let angle = atan2(this.velocity.dy, this.velocity.dx);
+
+		push();
 		
-		fill(color(0, 255, 0))
-		this.draw();
+		translate(this.x, this.y);
+		imageMode(CENTER);
+		rotate(angle);
+		translate(-this.x, -this.y);
+		image(this.img, this.x, this.y, w, h);
+		
+		pop();
 	}
 
 	move() {
