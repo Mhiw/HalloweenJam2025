@@ -1,12 +1,14 @@
 class Bullet extends Entity {
 	constructor(x, y, dx, dy, img) {
 		super(x, y);
-		this.img = img
-		this.collider = new Collider(x, y, 16, 8, "Bullet", function(tag) {
-			console.log(tag);
-		});
+		this.img = img;
 		this.velocity = new Velocity(dx, dy);
 		this.speed = 1;
+		this.collider = new Collider(x, y, 16, 8, "Bullet", (tag) => {
+			if(tag === "Static") {
+				this.velocity.invertVelocity(true, true);
+			}
+		});
 	}
 
 	update() {
@@ -32,6 +34,7 @@ class Bullet extends Entity {
 	}
 
 	move() {
+		console.log(this.velocity);
 		this.x += this.velocity.dx * this.speed * deltaTime;
 		this.y += this.velocity.dy * this.speed * deltaTime;
 	}

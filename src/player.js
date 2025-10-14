@@ -4,18 +4,14 @@ class Player extends Entity {
 		this.img = img;
 		this.gunImg = gunImg;
 
-		this.collider = new Collider(x, y, 16, 16, "Player", function(tag) {
+		this.collider = new Collider(x, y, 16, 16, "Player", (tag) => {
 			//console.log("Collision");
 		});
 	}
 
-		update() {
+	update() {
 		this.collider.x = this.x;
 		this.collider.y = this.y;
-
-		if(this.collider.checkCollision(["*"]) !== true) {
-			this.move();
-		}
 
 		imageMode(CENTER);
 		const w = this.img.width * SCALE;
