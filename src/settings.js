@@ -1,7 +1,9 @@
 // Settings (If needed):
 
-const TILE_SIZE = 16 
-const SCALE = 2
+const TILE_SIZE = 16; 
+const SCALE = 2;
+const WIDTH = 640;
+const HEIGHT = 360;
 
 
 // Asset Imports:

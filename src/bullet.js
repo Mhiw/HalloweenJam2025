@@ -7,8 +7,8 @@ class Bullet extends Entity {
 		this.collider = new Collider(x, y, 16, 8, "Bullet", (tag) => {
 			if(tag === "Static") {
 				this.collider.disabled = true;
-				this.x -= this.velocity.dx * (this.collider.w + 1);
-				this.y -= this.velocity.dy * (this.collider.h + 1);
+				this.x -= this.velocity.dx * this.collider.w * 2;
+				this.y -= this.velocity.dy * this.collider.h * 2;
 				this.velocity.dx *= -1;
 				this.velocity.dy *= -1;
 			}

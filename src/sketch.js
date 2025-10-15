@@ -2,12 +2,14 @@ let entities = [];
 let player;
 
 let walls = [
-	new Collider(350, 0, 16, 400, "Static", null),
-	new Collider(0, 0, 16, 400, "Static", null),
+	new Collider(-16, 0, 16, HEIGHT, "Static", null),
+	new Collider(WIDTH - 16, 0, 16, HEIGHT, "Static", null),
+	new Collider(0, -16, WIDTH, 16, "Static", null),
+	new Collider(0, HEIGHT, WIDTH, 16, "Static", null),
 ]
 
 function setup() {
-	createCanvas(640*SCALE, 360*SCALE);
+	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
 	noSmooth();
 	preloadAssets();
 
