@@ -3,7 +3,7 @@ class Player extends Entity {
 		super(x, y);
 		this.img = img;
 		this.gunImg = gunImg;
-		this.speed = 0.2;
+		this.speed = 0.1;
 		this.velocity = new Velocity(0, 0);
 		this.collider = new Collider(x, y, 16, 16, ["Player"], (tags) => {
 			if(tags[0] === "Static") {

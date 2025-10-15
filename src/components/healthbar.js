@@ -7,7 +7,7 @@ class Healthbar {
 
 	damage(value) {
 		this.current -= value;
-		if(value <= 0) {
+		if(this.current <= 0) {
 			this.onKill();
 		}
 	}

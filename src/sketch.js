@@ -16,6 +16,8 @@ function setup() {
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
 	entities.push(player);
+
+	spawnEnemies(5);
 }
 
 function spawnEnemies(count) {
