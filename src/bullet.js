@@ -1,3 +1,11 @@
+let bullets = [];
+
+function updateBullets() {
+	for(let i = 0; i < bullets.length; i++) {
+		bullets[i].update();
+	}
+}
+
 class Bullet extends Entity {
 	constructor(x, y, dx, dy, img) {
 		super(x, y);

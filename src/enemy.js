@@ -1,3 +1,11 @@
+let enemies = [];
+
+function updateEnemies() {
+	for(let i = 0; i < enemies.length; i++) {
+		enemies[i].update();
+	}
+}
+
 class Enemy extends Entity {
 	constructor(x, y) {
 		super(x, y);
@@ -9,6 +17,8 @@ class Enemy extends Entity {
 				this.healthbar.damage(10);
 			}
 		});
+
+		enemies.push(this);
 	}
 
 	update() {

@@ -1,6 +1,3 @@
-let entities = [];
-let player;
-
 let walls = [
 	new Collider(-16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
 	new Collider(WIDTH - 16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
@@ -15,14 +12,11 @@ function setup() {
 
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
-	entities.push(player);
-
-	spawnEnemies(5);
 }
 
 function spawnEnemies(count) {
 	for(let i = 0; i < count; i++) {
-		entities.push(new Enemy(Math.random() * 400, Math.random() * 400));
+		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400));
 	}
 }
 
@@ -35,9 +29,8 @@ function draw() {
 
 	drawTiles();
 
-	for(let i = 0; i < entities.length; i++) {
-		entities[i].update();
-	}
+	updateBullets();
+	updateEnemies();
 	
 	updateColliders();
 	
@@ -52,7 +45,6 @@ function draw() {
 function mouseClicked() {
 	startCameraShake(200, 3);
 
-	let player = entities[0];
 	scale(SCALE);
 	
 	let dx = mouseX / SCALE - player.x;
@@ -63,7 +55,7 @@ function mouseClicked() {
 	player.velocity.dx = -cos(angle);
 	player.velocity.dy = -sin(angle);
 
-	entities.push(new Bullet(player.x, player.y, cos(angle), sin(angle), bulletImg));
+	bullets.push(new Bullet(player.x, player.y, cos(angle), sin(angle), bulletImg));
 }
 
 function drawCursor() {
