@@ -3,14 +3,17 @@ class Bullet extends Entity {
 		super(x, y);
 		this.img = img;
 		this.velocity = new Velocity(dx, dy);
-		this.speed = 0.5;
-		this.collider = new Collider(x, y, 16, 8, "Bullet", (tag) => {
-			if(tag === "Static") {
+		this.speed = 0.2;
+		this.collider = new Collider(x, y, 16, 8, ["Bullet"], (tags) => {
+			if(tags[0] === "Static") {
 				this.collider.disabled = true;
-				this.x -= this.velocity.dx * this.collider.w * 2;
-				this.y -= this.velocity.dy * this.collider.h * 2;
-				this.velocity.dx *= -1;
-				this.velocity.dy *= -1;
+				if(tags[1] === "Vertical") {
+					this.x -= this.velocity.dx * this.collider.w * 2;
+					this.velocity.dx *= -1;
+				} else {
+					this.y -= this.velocity.dy * this.collider.h * 2;
+					this.velocity.dy *= -1;
+				}
 			}
 		});
 	}

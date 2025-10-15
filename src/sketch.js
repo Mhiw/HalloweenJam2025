@@ -2,10 +2,10 @@ let entities = [];
 let player;
 
 let walls = [
-	new Collider(-16, 0, 16, HEIGHT, "Static", null),
-	new Collider(WIDTH - 16, 0, 16, HEIGHT, "Static", null),
-	new Collider(0, -16, WIDTH, 16, "Static", null),
-	new Collider(0, HEIGHT, WIDTH, 16, "Static", null),
+	new Collider(-16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
+	new Collider(WIDTH - 16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
+	new Collider(0, -16, WIDTH, 16, ["Static", "Horizontal"], null),
+	new Collider(0, HEIGHT, WIDTH, 16, ["Static", "Horizontal"], null),
 ]
 
 function setup() {
@@ -13,7 +13,7 @@ function setup() {
 	noSmooth();
 	preloadAssets();
 
-	player = new Player(50, 50, playerImg);
+	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
 	entities.push(player);
 }
@@ -49,6 +49,7 @@ function draw() {
 
 function mouseClicked() {
 	startCameraShake(200, 3);
+
 	let player = entities[0];
 	scale(SCALE);
 	
@@ -56,6 +57,9 @@ function mouseClicked() {
 	let dy = mouseY / SCALE - player.y;
 
 	let angle = Math.atan2(dy, dx);
+
+	player.velocity.dx = -cos(angle);
+	player.velocity.dy = -sin(angle);
 
 	entities.push(new Bullet(player.x, player.y, cos(angle), sin(angle), bulletImg));
 }

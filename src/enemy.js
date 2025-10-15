@@ -1,7 +1,7 @@
 class Enemy extends Entity {
 	constructor(x, y) {
 		super(x, y);
-		this.collider = new Collider(x, y, 16, 16, "Enemy", (tag) => {
+		this.collider = new Collider(x, y, 16, 16, ["Enemy"], (tags) => {
 			//console.log("Collision");
 		});
 		this.healthbar = new Healthbar(100, function() {

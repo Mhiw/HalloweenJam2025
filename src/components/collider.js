@@ -1,12 +1,12 @@
 let colliders = [];
 
 class Collider {
-	constructor(x, y, w, h, tag, onCollision) {
+	constructor(x, y, w, h, tags, onCollision) {
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
-		this.tag = tag;
+		this.tags = tags;
 		this.onCollision = onCollision;
 		this.disabled = false;
 
@@ -26,10 +26,10 @@ function updateColliders() {
 
 			if(a.x + a.w > b.x && a.x < b.x + b.w && a.y + a.h > b.y && a.y < b.y + b.h) {
 				if(a.onCollision !== null) {
-					a.onCollision(b.tag);
+					a.onCollision(b.tags);
 				}
 				if(b.onCollision !== null) {
-					b.onCollision(a.tag);
+					b.onCollision(a.tags);
 				}
 			}
 		}
