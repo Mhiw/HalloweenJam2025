@@ -28,10 +28,12 @@ class Enemy extends Entity {
 		this.collider.x = this.x;
 		this.collider.y = this.y;
 
-		this.move();
+		//this.move();
 		
 		fill(color(255, 0, 0))
 		this.draw();
+
+		this.healthbar.draw(this.x + this.collider.w / 2, this.y + 20, 40, 5);
 	}
 
 	move() {

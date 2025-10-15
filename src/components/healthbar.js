@@ -11,4 +11,11 @@ class Healthbar {
 			this.onKill();
 		}
 	}
+
+	draw(originX, originY, width, height) {
+		fill(color(255, 0, 0));
+		rect(originX - width / 2, originY, width, height);
+		fill(color(0, 255, 0));
+		rect(originX - width / 2, originY, width * (this.current / this.max), height);
+	}
 }
