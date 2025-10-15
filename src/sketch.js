@@ -57,6 +57,7 @@ function mouseClicked() {
 	player.velocity.dx = -cos(angle);
 	player.velocity.dy = -sin(angle);
 
+	shootSound.play();
 	bullets.push(new Bullet(player.x, player.y, cos(angle), sin(angle), bulletImg));
 }
 

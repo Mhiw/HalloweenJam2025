@@ -15,6 +15,10 @@ let cursorImg;
 
 // Tiles:
 
+// Sounds:
+let shootSound;
+let bounceSound;
+
 let tileImgs = {};
 
 function preloadAssets(){
@@ -36,4 +40,7 @@ function preloadAssets(){
     };
 
     // Audio:
+
+    shootSound = loadSound("assets/sounds/shoot.wav");
+    bounceSound = loadSound("assets/sounds/bounce.wav");
 }

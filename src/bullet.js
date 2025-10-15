@@ -22,6 +22,8 @@ class Bullet extends Entity {
 					this.y -= this.velocity.dy * this.collider.h * 2;
 					this.velocity.dy *= -1;
 				}
+
+				bounceSound.play();
 			}
 			if(tags[0] === "Enemy") {
 				const index = bullets.indexOf(this);

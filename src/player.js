@@ -17,6 +17,8 @@ class Player extends Entity {
 					this.y -= this.velocity.dy * this.collider.h * 1.5;
 					this.velocity.dy *= -1;
 				}
+
+				bounceSound.play();
 			}
 		});
 	}
