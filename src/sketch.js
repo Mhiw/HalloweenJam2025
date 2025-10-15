@@ -5,6 +5,12 @@ let walls = [
 	new Collider(0, HEIGHT, WIDTH, 16, ["Static", "Horizontal"], null),
 ]
 
+function spawnEnemies(count) {
+	for(let i = 0; i < count; i++) {
+		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400));
+	}
+}
+
 function setup() {
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
 	noSmooth();
@@ -12,12 +18,8 @@ function setup() {
 
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
-}
 
-function spawnEnemies(count) {
-	for(let i = 0; i < count; i++) {
-		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400));
-	}
+	spawnEnemies(5);
 }
 
 function draw() {

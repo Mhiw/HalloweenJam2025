@@ -23,6 +23,12 @@ class Bullet extends Entity {
 					this.velocity.dy *= -1;
 				}
 			}
+			if(tags[0] === "Enemy") {
+				const index = bullets.indexOf(this);
+				if(index > -1) {
+					bullets.splice(index, 1);
+				}
+			}
 		});
 	}
 
