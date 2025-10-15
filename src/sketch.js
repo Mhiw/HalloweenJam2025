@@ -45,8 +45,6 @@ function draw() {
 }
 
 function mouseClicked() {
-	startCameraShake(200, 3);
-
 	scale(SCALE);
 	
 	let dx = mouseX / SCALE - player.x;

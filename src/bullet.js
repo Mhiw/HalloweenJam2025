@@ -24,6 +24,7 @@ class Bullet extends Entity {
 				}
 
 				bounceSound.play();
+				startCameraShake(50, 3);
 			}
 			if(tags[0] === "Enemy") {
 				const index = bullets.indexOf(this);
@@ -31,6 +32,8 @@ class Bullet extends Entity {
 					bullets.splice(index, 1);
 					this.collider.remove();
 				}
+				startCameraShake(10, 3);
+				hitSound.play();
 			}
 		});
 	}

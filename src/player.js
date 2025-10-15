@@ -19,6 +19,7 @@ class Player extends Entity {
 				}
 
 				bounceSound.play();
+				startCameraShake(100, 3);
 			}
 		});
 	}
