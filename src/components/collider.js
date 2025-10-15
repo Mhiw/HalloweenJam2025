@@ -7,17 +7,24 @@ class Collider {
 		this.w = w;
 		this.h = h;
 		this.tags = tags;
-		this.onCollision = onCollision;
 		this.disabled = false;
+		this.onCollision = onCollision;
 
 		colliders.push(this);
+	}
+
+	remove() {
+		const index = colliders.indexOf(this);
+		if(index > -1) {
+			colliders.splice(index, 1);
+		}
 	}
 }
 
 function updateColliders() {
 	for(let i = 0; i < colliders.length; i++) {
 		for(let j = 0; j < colliders.length; j++) {
-			if(i === j || colliders[i].disabled | colliders[j].disabled) {
+			if(i >= colliders.length | j >= colliders.length || i === j || colliders[i].disabled | colliders[j].disabled) {
 				continue;
 			}
 

@@ -6,6 +6,10 @@ function startCameraShake(duration, magnitude) {
   shakeMagnitude = magnitude;
 }
 
+function startCRT() {
+  
+}
+
 function applyCameraShake() {
   if (shakeDuration > 0) {
     const shakeX = random(-shakeMagnitude, shakeMagnitude);

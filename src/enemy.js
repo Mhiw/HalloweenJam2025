@@ -14,8 +14,8 @@ class Enemy extends Entity {
 			const index = enemies.indexOf(this);
 			if(index > -1) {
 				enemies.splice(index, 1);
+				this.collider.remove();
 			}
-			console.log("Dead! :(");
 		});
 		this.collider = new Collider(x, y, 16, 16, ["Enemy"], (tags) => {
 			if(tags[0] === "Bullet") {

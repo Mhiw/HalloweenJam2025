@@ -27,6 +27,7 @@ class Bullet extends Entity {
 				const index = bullets.indexOf(this);
 				if(index > -1) {
 					bullets.splice(index, 1);
+					this.collider.remove();
 				}
 			}
 		});
