@@ -8,6 +8,7 @@ class Collider {
 		this.h = h;
 		this.tag = tag;
 		this.onCollision = onCollision;
+		this.disabled = false;
 
 		colliders.push(this);
 	}
@@ -16,7 +17,7 @@ class Collider {
 function updateColliders() {
 	for(let i = 0; i < colliders.length; i++) {
 		for(let j = 0; j < colliders.length; j++) {
-			if(i === j) {
+			if(i === j || colliders[i].disabled | colliders[j].disabled) {
 				continue;
 			}
 
