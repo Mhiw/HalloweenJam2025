@@ -7,6 +7,9 @@ class Player extends Entity {
 		this.gunImg = gunImg;
 		this.speed = 0.2;
 		this.velocity = new Velocity(0, 0);
+		this.healthbar = new Healthbar(100, () => {
+			console.log("Player died :(");
+		});
 		this.collider = new Collider(x, y, 16, 16, ["Player"], (tags) => {
 			if(tags[0] === "Static") {
 				this.collider.disabled = true;
@@ -20,6 +23,9 @@ class Player extends Entity {
 
 				bounceSound.play();
 				startCameraShake(100, 3);
+			}
+			if(tags[0] === "Enemy" || tags[0] === "Bullet") {
+				this.healthbar.damage(10);
 			}
 		});
 	}
