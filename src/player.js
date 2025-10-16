@@ -44,6 +44,8 @@ class Player extends Entity {
 		const w = this.img.width * SCALE;
 		const h = this.img.height * SCALE;
 		image(this.img, this.x, this.y, w, h);
+
+		image(shadowImg, this.x, this.y + 10, 24*SCALE, 24*SCALE);
 	}
 
 	move() {

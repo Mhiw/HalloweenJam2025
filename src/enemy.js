@@ -7,8 +7,9 @@ function updateEnemies() {
 }
 
 class Enemy extends Entity {
-	constructor(x, y) {
+	constructor(x, y, img) {
 		super(x, y);
+		this.img = img;
 		this.speed = 0.05;
 		this.healthbar = new Healthbar(100, () => {
 			const index = enemies.indexOf(this);
@@ -30,7 +31,12 @@ class Enemy extends Entity {
 
 		this.move();
 		
-		fill(color(255, 0, 0))
+		imageMode(CENTER);
+		image(shadowImg, this.x, this.y, 24*SCALE, 24*SCALE);
+		const w = this.img.width * SCALE;
+		const h = this.img.height * SCALE;
+		image(this.img, this.x, this.y, w, h);
+
 		this.draw();
 
 		this.healthbar.draw(this.x + this.collider.w / 2, this.y + 20, 40, 5);

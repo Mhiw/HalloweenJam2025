@@ -7,7 +7,7 @@ let walls = [
 
 function spawnEnemies(count) {
 	for(let i = 0; i < count; i++) {
-		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400));
+		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400, enemyImg));
 	}
 }
 

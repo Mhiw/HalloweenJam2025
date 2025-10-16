@@ -12,6 +12,8 @@ let playerImg;
 let bulletImg;
 let gunImg;
 let cursorImg;
+let enemyImg;
+let shadowImg;
 
 // Tiles:
 
@@ -29,6 +31,8 @@ function preloadAssets(){
     bulletImg = loadImage("assets/player/Bullet.png");
     gunImg = loadImage("assets/player/Gun.png");
     cursorImg = loadImage("assets/Cursor.png");
+    enemyImg = loadImage("assets/enemies/Eye.png");
+    shadowImg = loadImage("assets/shadow.png");
 
     // Tiles:
 
