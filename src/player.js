@@ -49,5 +49,12 @@ class Player extends Entity {
 	move() {
 		this.x += this.velocity.dx * this.speed * deltaTime;
 		this.y += this.velocity.dy * this.speed * deltaTime;
+
+		const friction = 0.97;
+		this.velocity.dx *= friction;
+		this.velocity.dy *= friction;
+
+		if (abs(this.velocity.dx) < 0.01) this.velocity.dx = 0;
+ 		if (abs(this.velocity.dy) < 0.01) this.velocity.dy = 0;
 	}
 }
