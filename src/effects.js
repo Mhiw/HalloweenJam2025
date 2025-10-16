@@ -19,3 +19,5 @@ function applyCameraShake() {
     shakeDuration -= deltaTime;
   }
 }
+
+

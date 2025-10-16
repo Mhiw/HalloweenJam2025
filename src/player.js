@@ -21,6 +21,8 @@ class Player extends Entity {
 					this.velocity.dy *= -1;
 				}
 
+				bounceSound.setVolume(0.2);
+				bounceSound.rate(random(0.8, 1.2));
 				bounceSound.play();
 				startCameraShake(100, 3);
 			}

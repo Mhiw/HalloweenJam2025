@@ -42,6 +42,7 @@ function draw() {
 	drawCursor();
 
 	pop();
+
 }
 
 function mouseClicked() {
@@ -55,8 +56,14 @@ function mouseClicked() {
 	player.velocity.dx = -cos(angle);
 	player.velocity.dy = -sin(angle);
 
+	const barrelX = gun.x + Math.cos(angle) * gun.barrelLength;
+	const barrelY = gun.y + Math.sin(angle) * gun.barrelLength;
+
+	bullets.push(new Bullet(barrelX, barrelY, cos(angle), sin(angle), bulletImg));
+
+	shootSound.setVolume(0.2);
+	shootSound.rate(random(0.8, 1.2));
 	shootSound.play();
-	bullets.push(new Bullet(player.x, player.y, cos(angle), sin(angle), bulletImg));
 }
 
 function drawCursor() {

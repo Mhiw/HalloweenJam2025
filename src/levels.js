@@ -1,13 +1,13 @@
 
 const level1 = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+  [5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6],
+  [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+  [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+  [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+  [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+  [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+  [3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+  [7,2,2,2,2,2,2,2,2,2,2,2,2,2,2,8],
 ];
 
 
@@ -30,6 +30,12 @@ function loadLevel(level) {
 }
 
 function drawTiles() {
+    const mapWidth = tileMap[0].length * TILE_SIZE * SCALE;
+    const mapHeight = tileMap.length * TILE_SIZE * SCALE;
+
+    const offsetX = (width/SCALE - mapWidth) / 2;
+    const offsetY = (height/SCALE - mapHeight) / 2;
+
     for (let y = 0; y < tileMap.length; y++) {
         for (let x = 0; x < tileMap[y].length; x++) {
             const tile = tileMap[y][x];
@@ -39,8 +45,8 @@ function drawTiles() {
                 imageMode(CORNER);
                 image(
                     img,
-                    x * TILE_SIZE * SCALE,
-                    y * TILE_SIZE * SCALE,
+                    offsetX + x * TILE_SIZE * SCALE,
+                    offsetY + y * TILE_SIZE * SCALE,
                     TILE_SIZE * SCALE,
                     TILE_SIZE * SCALE
                 );

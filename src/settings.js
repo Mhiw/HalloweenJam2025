@@ -33,11 +33,15 @@ function preloadAssets(){
     // Tiles:
 
     tileImgs = {
-        0 : loadImage("assets/tilemap_one/tile9.png"),
-        1 : loadImage("assets/tilemap_one/tile2.png"),
-        2 : loadImage("assets/tilemap_one/tile16.png"),
-        3 : loadImage("assets/tilemap_one/tile8.png"),
-        4 : loadImage("assets/tilemap_one/tile10.png")
+        0 : loadImage("assets/tilemap_one/tile9.png"), // Ground
+        1 : loadImage("assets/tilemap_one/tile2.png"), // Upper Wall
+        2 : loadImage("assets/tilemap_one/tile16.png"), // Lower Wall
+        3 : loadImage("assets/tilemap_one/tile8.png"), // Left Wall
+        4 : loadImage("assets/tilemap_one/tile10.png"), // Right Wall
+        5 : loadImage("assets/tilemap_one/tile1.png"), // TopLeft Corner
+        6 : loadImage("assets/tilemap_one/tile3.png"), // TopRight Corner
+        7 : loadImage("assets/tilemap_one/tile19.png"), // BottomLeft Corner
+        8: loadImage("assets/tilemap_one/tile21.png") // BottomRight Corner 
     };
 
     // Audio:

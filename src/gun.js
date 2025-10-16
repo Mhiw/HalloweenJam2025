@@ -3,8 +3,10 @@ class Gun {
     this.x = x;
     this.y = y;
     this.img = img;
-    this.offsetX = 0;
-    this.offsetY = 0;
+    this.offsetX = 4;
+    this.offsetY = -2;
+
+    this.barrelLength = 10;
   }
 
   followPlayer(px, py) {

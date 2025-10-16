@@ -23,6 +23,8 @@ class Bullet extends Entity {
 					this.velocity.dy *= -1;
 				}
 
+				bounceSound.setVolume(0.2);
+				bounceSound.rate(random(0.8, 1.2));
 				bounceSound.play();
 				startCameraShake(50, 3);
 			}
@@ -33,6 +35,8 @@ class Bullet extends Entity {
 					this.collider.remove();
 				}
 				startCameraShake(10, 3);
+				hitSound.setVolume(0.2);
+				hitSound.rate(random(0.8, 1.2));
 				hitSound.play();
 			}
 		});
