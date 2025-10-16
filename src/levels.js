@@ -16,6 +16,16 @@ let tileMap = level1;
 function loadLevel(level) {
     tileMap = level;
 
+    for (let y = 0; y < tileMap.length; y++) {
+      	for (let x = 0; x < tileMap[y].length; x++) {
+        	if(tileMap[y][x] > 0) {
+          		colliders.push(new Collider(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, ["Static"], (tags) => {
+                
+    			}));
+        	}
+    	}
+    }
+
     // Denna funktion kan man då använda när ex. alla fiender är döda och man ska till nästa level. 
 }
 
