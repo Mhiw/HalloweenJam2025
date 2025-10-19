@@ -8,8 +8,13 @@ class Healthbar {
 	damage(value) {
 		this.current -= value;
 		if(this.current <= 0) {
+			this.current = 0;
 			this.onKill();
 		}
+	}
+
+	fill() {
+		this.current = this.max;
 	}
 
 	draw(originX, originY, width, height) {
