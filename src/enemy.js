@@ -11,7 +11,7 @@ class Enemy extends Entity {
 		super(x, y);
 		this.img = img;
 		this.speed = 0.05;
-		this.healthbar = new Healthbar(10, () => {
+		this.healthbar = new Healthbar(5, () => {
 			const index = enemies.indexOf(this);
 			if(index > -1) {
 				enemies.splice(index, 1);
@@ -20,7 +20,7 @@ class Enemy extends Entity {
 		});
 		this.collider = new Collider(x, y, 16, 16, ["Enemy"], (tags) => {
 			if(tags[0] === "Bullet") {
-				this.healthbar.damage(10);
+				this.healthbar.damage(1);
 			}
 		});
 	}
