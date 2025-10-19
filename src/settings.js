@@ -24,6 +24,8 @@ let shootSound;
 let bounceSound;
 let hitSound;
 
+let gameMusic;
+
 let tileImgs = {};
 
 function preloadAssets(){
@@ -45,7 +47,6 @@ function preloadAssets(){
         loadImage("assets/healthBar3.png"),
         loadImage("assets/healthBar4.png"),
     ];
-    startBtnImg = loadImage("assets/start.png");
 
     // Tiles:
 
@@ -66,4 +67,6 @@ function preloadAssets(){
     shootSound = loadSound("assets/sounds/shoot.wav");
     bounceSound = loadSound("assets/sounds/bounce.wav");
     hitSound = loadSound("assets/sounds/hit.wav");
+
+    gameMusic = loadSound("assets/music.wav");
 }
