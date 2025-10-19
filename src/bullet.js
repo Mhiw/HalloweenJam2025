@@ -12,6 +12,7 @@ class Bullet extends Entity {
 		this.img = img;
 		this.velocity = new Velocity(dx, dy);
 		this.speed = 0.2;
+		this.immuneTimer = 100;
 		this.collider = new Collider(x, y, 16, 8, ["Bullet"], (tags) => {
 			if(tags[0] === "Static") {
 				this.collider.disabled = true;
@@ -28,7 +29,7 @@ class Bullet extends Entity {
 				bounceSound.play();
 				startCameraShake(50, 3);
 			}
-			if(tags[0] === "Enemy") {
+			if(tags[0] === "Enemy" || tags[0] === "Player") {
 				const index = bullets.indexOf(this);
 				if(index > -1) {
 					bullets.splice(index, 1);
@@ -41,14 +42,18 @@ class Bullet extends Entity {
 			}
 		});
 
+		this.collider.disabled = true;
 		shootSound.setVolume(0.2);
 		shootSound.rate(random(0.8, 1.2));
 		shootSound.play();
 	}
 
 	update() {
-		this.collider.disabled = false;
-
+		this.immuneTimer -= deltaTime;
+		if(this.immuneTimer <= 0) {
+			this.collider.disabled = false;
+		}
+		
 		this.collider.x = this.x;
 		this.collider.y = this.y;
 

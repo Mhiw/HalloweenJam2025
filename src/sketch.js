@@ -8,7 +8,7 @@ function setup() {
 	CURRENT_STATE = Gamestate.ALIVE;
 
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
-	
+
 	noSmooth();
 
 	loadLevel(level1);
@@ -24,6 +24,7 @@ function setup() {
 function draw() {
 	background(0);
 	scale(SCALE)
+	//translate(-WIDTH / 2, -HEIGHT / 2);
 
 	push();
 	
@@ -62,7 +63,7 @@ function mouseClicked() {
 		const barrelX = gun.x + Math.cos(angle) * gun.barrelLength;
 		const barrelY = gun.y + Math.sin(angle) * gun.barrelLength;
 
-		bullets.push(new Bullet(barrelX + cos(angle) * 2, barrelY + sin(angle) * 2, cos(angle), sin(angle), bulletImg));
+		bullets.push(new Bullet(barrelX + cos(angle), barrelY + sin(angle), cos(angle), sin(angle), bulletImg));
 	}
 }
 

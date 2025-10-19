@@ -13,7 +13,7 @@ class Entity {
 	}
 
 	draw() {
-		rect(this.x, this.y, 16, 16);
+		
 	}
 
 	move() {
