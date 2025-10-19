@@ -29,9 +29,9 @@ function draw() {
 	
 	drawTiles();
 
-	if(CURRENT_STATE === Gamestate.ALIVE) {
-		applyCameraShake();
+	applyCameraShake();
 
+	if(CURRENT_STATE === Gamestate.ALIVE) {
 		updateBullets();
 		updateEnemies();
 		
@@ -48,24 +48,22 @@ function draw() {
 }
 
 function mouseClicked() {
-	scale(SCALE);
-	
-	let dx = mouseX / SCALE - player.x;
-	let dy = mouseY / SCALE - player.y;
+	if(CURRENT_STATE === Gamestate.ALIVE) {
+		scale(SCALE);
+		
+		let dx = mouseX / SCALE - player.x;
+		let dy = mouseY / SCALE - player.y;
 
-	let angle = Math.atan2(dy, dx);
+		let angle = Math.atan2(dy, dx);
 
-	player.velocity.dx = -cos(angle);
-	player.velocity.dy = -sin(angle);
+		player.velocity.dx = -cos(angle);
+		player.velocity.dy = -sin(angle);
 
-	const barrelX = gun.x + Math.cos(angle) * gun.barrelLength;
-	const barrelY = gun.y + Math.sin(angle) * gun.barrelLength;
+		const barrelX = gun.x + Math.cos(angle) * gun.barrelLength;
+		const barrelY = gun.y + Math.sin(angle) * gun.barrelLength;
 
-	bullets.push(new Bullet(barrelX, barrelY, cos(angle), sin(angle), bulletImg));
-
-	shootSound.setVolume(0.2);
-	shootSound.rate(random(0.8, 1.2));
-	shootSound.play();
+		bullets.push(new Bullet(barrelX + cos(angle) * 2, barrelY + sin(angle) * 2, cos(angle), sin(angle), bulletImg));
+	}
 }
 
 function drawCursor() {

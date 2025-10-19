@@ -40,6 +40,10 @@ class Bullet extends Entity {
 				hitSound.play();
 			}
 		});
+
+		shootSound.setVolume(0.2);
+		shootSound.rate(random(0.8, 1.2));
+		shootSound.play();
 	}
 
 	update() {

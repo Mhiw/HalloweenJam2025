@@ -8,6 +8,7 @@ class Player extends Entity {
 		this.speed = 0.2;
 		this.velocity = new Velocity(0, 0);
 		this.healthbar = new Healthbar(100, () => {
+			startCameraShake(50, 3);
 			CURRENT_STATE = Gamestate.DEAD;
 		});
 		this.collider = new Collider(x, y, 16, 16, ["Player"], (tags) => {
