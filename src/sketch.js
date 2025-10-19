@@ -20,6 +20,7 @@ function nextWave() {
 }
 
 function restart() {
+	KILLS = 0;
 	waveCount = 0;
 	enemies = [];
 	bullets = [];
@@ -64,6 +65,9 @@ function draw() {
 		player.update();
 		gun.followPlayer(player.x + 10, player.y + 10);
 		gun.update();
+
+		fill(255, 255, 255);
+		text("KILLS : " + KILLS, 150, 25);
 	}
 
 	if(CURRENT_STATE === Gamestate.DEAD) {

@@ -17,6 +17,8 @@ let healthbarImgs = [];
 let startImg;
 let quitImg;
 
+let font;
+
 // Tiles:
 
 // Sounds:
@@ -37,6 +39,9 @@ function preloadAssets(){
     shadowImg = loadImage("assets/shadow.png");
     startImg = loadImage("assets/start.png");
     quitImg = loadImage("assets/quit.png");
+
+    font = loadFont("assets/font/pixelfont.ttf");
+    textFont(font);
 
     healthbarImgs = [
         loadImage("assets/healthBar0.png"),

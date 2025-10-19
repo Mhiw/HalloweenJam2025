@@ -5,3 +5,5 @@ const Gamestate = {
 };
 
 let CURRENT_STATE = Gamestate.DEAD;
+
+let KILLS = 0;

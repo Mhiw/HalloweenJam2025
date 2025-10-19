@@ -12,6 +12,7 @@ class Enemy extends Entity {
 		this.img = img;
 		this.speed = 0.05;
 		this.healthbar = new Healthbar(5, () => {
+			KILLS += 1;
 			const index = enemies.indexOf(this);
 			if(index > -1) {
 				enemies.splice(index, 1);
