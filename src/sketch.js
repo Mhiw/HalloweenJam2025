@@ -69,7 +69,7 @@ function draw() {
 	if(CURRENT_STATE === Gamestate.DEAD) {
 		imageMode(CENTER);
 
-		image(startImg, startButton.x + startButton.w / 2, startButton.y + startButton.h / 2, startButton.w, startButton.h);
+		image(startImg, startButton.x + startButton.w / 2, -5 + startButton.y + startButton.h / 2 + sin(millis() / 200) * 3, startButton.w, startButton.h);
 		image(quitImg, quitButton.x + quitButton.w / 2, quitButton.y + quitButton.h / 2, quitButton.w, quitButton.h);
 	}
 
