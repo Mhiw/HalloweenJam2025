@@ -1,5 +1,5 @@
 let walls = [
-	new Collider(-16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
+	new Collider(0, 0, 16, HEIGHT, ["Static", "Vertical"], null),
 	new Collider(WIDTH - 16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
 	new Collider(0, -16, WIDTH, 16, ["Static", "Horizontal"], null),
 	new Collider(0, HEIGHT, WIDTH, 16, ["Static", "Horizontal"], null),
@@ -14,6 +14,9 @@ function spawnEnemies(count) {
 function setup() {
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
 	noSmooth();
+
+	loadLevel(level1);
+
 	preloadAssets();
 
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
