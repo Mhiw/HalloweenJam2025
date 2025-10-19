@@ -1,98 +1,94 @@
 const startButton = {
-  x: WIDTH / 2 - 50,
-  y: HEIGHT / 2 - 25,
-  w: 64 * SCALE,
-  h: 32 * SCALE
+	x: WIDTH / 2 - 50,
+	y: HEIGHT / 2 - 25,
+	w: 64 * SCALE,
+	h: 32 * SCALE
 };
 
 const quitButton = {
-  x: WIDTH / 2 - 50,
-  y: HEIGHT / 2 + 40,
-  w: 64 * SCALE,
-  h: 32 * SCALE
+	x: WIDTH / 2 - 50,
+	y: HEIGHT / 2 + 40,
+	w: 64 * SCALE,
+	h: 32 * SCALE
 };
 
-let waveCount = 0;
-
-function nextWave() {
-	waveCount += 1;
-	spawnEnemies(Math.ceil(Math.pow(waveCount, 1.2)));
-}
-
 function restart() {
-	KILLS = 0;
-	waveCount = 0;
 	enemies = [];
 	bullets = [];
-	colliders = [];
-	loadLevel(level1);
-	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
-	gun = new Gun(player.x+10, player.y+10, gunImg);
-	nextWave();
+	player.x = WIDTH / 2;
+	player.y = HEIGHT / 2;
+	player.healthbar.fill();
+	spawnEnemies(5);
 }
 
 function spawnEnemies(count) {
-	for(let i = 0; i < count; i++) {
+	for (let i = 0; i < count; i++) {
 		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400, enemyImg));
 	}
 }
 
-function setup() {
-	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
-
-	noSmooth();
-
+function preload() {
 	preloadAssets();
 }
 
-function draw() {
-	background(0);
-	scale(SCALE);
+function setup() {
+	createCanvas(WIDTH * SCALE, HEIGHT * SCALE);
 
-	if(enemies.length === 0 && CURRENT_STATE === Gamestate.ALIVE) {
-		nextWave();
-		console.log("YES");
+	noSmooth();
+
+	loadLevel(level1);
+
+	player = new Player(WIDTH / 2, HEIGHT / 2, playerImg);
+	gun = new Gun(player.x + 10, player.y + 10, gunImg);
+
+}
+
+function draw() {
+
+	background(0);
+	scale(SCALE)
+
+	if (gameMusic && !gameMusic.isPlaying()) {
+		gameMusic.loop();
+		gameMusic.setVolume(0.2);
 	}
 
 	push();
 	drawTiles();
 	applyCameraShake();
 
-	if(CURRENT_STATE === Gamestate.ALIVE) {
+	if (CURRENT_STATE === Gamestate.ALIVE) {
 		updateBullets();
 		updateEnemies();
 		updateColliders();
 		player.update();
 		gun.followPlayer(player.x + 10, player.y + 10);
 		gun.update();
-
-		fill(255, 255, 255);
-		text("KILLS : " + KILLS, 150, 25);
 	}
 
-	if(CURRENT_STATE === Gamestate.DEAD) {
+	if (CURRENT_STATE === Gamestate.DEAD) {
 		imageMode(CENTER);
 
-		image(startImg, startButton.x + startButton.w / 2, -5 + startButton.y + startButton.h / 2 + sin(millis() / 200) * 3, startButton.w, startButton.h);
+		image(startImg, startButton.x + startButton.w / 2, startButton.y + startButton.h / 2, startButton.w, startButton.h);
 		image(quitImg, quitButton.x + quitButton.w / 2, quitButton.y + quitButton.h / 2, quitButton.w, quitButton.h);
 	}
 
 	drawCursor();
-	
+
 	pop();
 }
 
 function mouseClicked() {
 
 	if (CURRENT_STATE === Gamestate.DEAD) {
-		
+
 		const mx = mouseX / SCALE;
 		const my = mouseY / SCALE;
-		
+
 		if (mx > startButton.x && mx < startButton.x + startButton.w && my > startButton.y && my < startButton.y + startButton.h) {
 			console.log("START clicked!");
-			restart();
 			CURRENT_STATE = Gamestate.ALIVE;
+			restart();
 		}
 
 		if (mx > quitButton.x && mx < quitButton.x + quitButton.w && my > quitButton.y && my < quitButton.y + quitButton.h) {
@@ -101,9 +97,9 @@ function mouseClicked() {
 		}
 	}
 
-	if(CURRENT_STATE === Gamestate.ALIVE) {
+	if (CURRENT_STATE === Gamestate.ALIVE) {
 		scale(SCALE);
-		
+
 		let dx = mouseX / SCALE - player.x;
 		let dy = mouseY / SCALE - player.y;
 
@@ -120,8 +116,8 @@ function mouseClicked() {
 }
 
 function drawCursor() {
-  imageMode(CENTER);
-  image(cursorImg, mouseX / SCALE, mouseY / SCALE, cursorImg.width * SCALE, cursorImg.height * SCALE);
-  noCursor();
+	imageMode(CENTER);
+	image(cursorImg, mouseX / SCALE, mouseY / SCALE, cursorImg.width * SCALE, cursorImg.height * SCALE);
+	noCursor();
 }
 
