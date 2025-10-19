@@ -27,9 +27,26 @@ class Player extends Entity {
 				bounceSound.play();
 				startCameraShake(100, 3);
 			}
-			if(tags[0] === "Enemy" || tags[0] === "Bullet") {
+			if(tags[0] === "Bullet") {
 				this.healthbar.damage(1);
 				
+			}
+			if(tags[0] === "Enemy") {
+				this.healthbar.damage(1);
+				let dx = enemies[0].x - player.x;
+				let dy = enemies[0].y - player.y;
+				let dd = Math.sqrt(dx * dx + dy * dy);
+				for(let i = 0; i < enemies.length; i++) {
+					let ndx = enemies[i].x - player.x;
+					let ndy = enemies[i].y - player.y;
+					let ndd = Math.sqrt(ndx * ndx + ndy *ndy);
+					if(ndd < dd) {
+						dx = ndx; dy = ndy; dd = ndd;
+					}
+				}
+
+				player.x += -dx / dd * 10;
+				player.y += -dy / dd * 10;
 			}
 		});
 	}

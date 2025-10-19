@@ -22,6 +22,14 @@ class Enemy extends Entity {
 			if(tags[0] === "Bullet") {
 				this.healthbar.damage(1);
 			}
+			if(tags[0] === "Player") {
+				let dx = this.x - player.x;
+				let dy = this.y - player.y;
+				let dd = Math.sqrt(dx * dx + dy * dy);
+
+				this.x += dx / dd * 10;
+				this.y += dy / dd * 10;
+			}
 		});
 	}
 
