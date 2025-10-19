@@ -1,10 +1,3 @@
-let walls = [
-	new Collider(0, 0, 16, HEIGHT, ["Static", "Vertical"], null),
-	new Collider(WIDTH - 16, 0, 16, HEIGHT, ["Static", "Vertical"], null),
-	new Collider(0, -16, WIDTH, 16, ["Static", "Horizontal"], null),
-	new Collider(0, HEIGHT, WIDTH, 16, ["Static", "Horizontal"], null),
-]
-
 function spawnEnemies(count) {
 	for(let i = 0; i < count; i++) {
 		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400, enemyImg));
