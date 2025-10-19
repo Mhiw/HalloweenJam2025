@@ -18,7 +18,7 @@ function setup() {
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
 
-	spawnEnemies(5);
+	//spawnEnemies(5);
 }
 
 function draw() {
@@ -62,7 +62,7 @@ function mouseClicked() {
 		const barrelX = gun.x + Math.cos(angle) * gun.barrelLength;
 		const barrelY = gun.y + Math.sin(angle) * gun.barrelLength;
 
-		bullets.push(new Bullet(barrelX + cos(angle) * 2, barrelY + sin(angle) * 2, cos(angle), sin(angle), bulletImg));
+		bullets.push(new Bullet(barrelX + cos(angle), barrelY + sin(angle), cos(angle), sin(angle), bulletImg));
 	}
 }
 
