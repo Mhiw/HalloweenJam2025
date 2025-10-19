@@ -48,7 +48,7 @@ class Player extends Entity {
 
 		image(shadowImg, this.x, this.y + 10, 24*SCALE, 24*SCALE);
 
-		this.healthbar.draw();
+		this.healthbar.drawAsPlayer();
 	}
 
 	move() {

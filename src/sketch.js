@@ -18,7 +18,7 @@ function setup() {
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
 
-	//spawnEnemies(5);
+	spawnEnemies(5);
 }
 
 function draw() {

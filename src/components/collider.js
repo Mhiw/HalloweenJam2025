@@ -23,7 +23,7 @@ class Collider {
 
 function updateColliders() {
 	for(let i = 0; i < colliders.length; i++) {
-		rect(colliders[i].x, colliders[i].y, colliders[i].w, colliders[i].h);
+		//rect(colliders[i].x, colliders[i].y, colliders[i].w, colliders[i].h);
 		for(let j = 0; j < colliders.length; j++) {
 			if(i >= colliders.length | j >= colliders.length || i === j || colliders[i].disabled | colliders[j].disabled) {
 				continue;
