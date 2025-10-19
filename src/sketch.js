@@ -37,6 +37,10 @@ function spawnEnemies(count) {
 	}
 }
 
+function preload() {
+	preloadAssets();
+}
+
 function setup() {
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
 
@@ -48,6 +52,13 @@ function setup() {
 function draw() {
 	background(0);
 	scale(SCALE);
+
+	/*
+	if (gameMusic !== null && !gameMusic.isPlaying()) {
+		gameMusic.loop();
+		gameMusic.setVolume(0.2);
+	}
+	*/
 
 	if(enemies.length === 0 && CURRENT_STATE === Gamestate.ALIVE) {
 		nextWave();
