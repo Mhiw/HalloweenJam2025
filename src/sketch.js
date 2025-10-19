@@ -12,14 +12,22 @@ const quitButton = {
   h: 32 * SCALE
 };
 
+let waveCount = 0;
+
+function nextWave() {
+	waveCount += 1;
+	spawnEnemies(Math.ceil(Math.pow(waveCount, 1.2)));
+}
+
 function restart() {
+	waveCount = 0;
 	enemies = [];
 	bullets = [];
 	colliders = [];
 	loadLevel(level1);
 	player = new Player(WIDTH/2, HEIGHT/2, playerImg);
 	gun = new Gun(player.x+10, player.y+10, gunImg);
-	spawnEnemies(5);
+	nextWave();
 }
 
 function spawnEnemies(count) {
@@ -34,12 +42,16 @@ function setup() {
 	noSmooth();
 
 	preloadAssets();
-
 }
 
 function draw() {
 	background(0);
-	scale(SCALE)
+	scale(SCALE);
+
+	if(enemies.length === 0 && CURRENT_STATE === Gamestate.ALIVE) {
+		nextWave();
+		console.log("YES");
+	}
 
 	push();
 	drawTiles();
