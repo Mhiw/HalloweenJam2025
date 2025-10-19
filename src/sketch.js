@@ -1,12 +1,24 @@
+const startButton = {
+  x: WIDTH / 2 - 50,
+  y: HEIGHT / 2 - 25,
+  w: 64 * SCALE,
+  h: 32 * SCALE
+};
+
+const quitButton = {
+  x: WIDTH / 2 - 50,
+  y: HEIGHT / 2 + 40,
+  w: 64 * SCALE,
+  h: 32 * SCALE
+};
+
 function spawnEnemies(count) {
 	for(let i = 0; i < count; i++) {
-		enemies.push(new Enemy(Math.random() * WIDTH / SCALE, Math.random() * WIDTH / SCALE, enemyImg));
+		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400, enemyImg));
 	}
 }
 
 function setup() {
-	CURRENT_STATE = Gamestate.ALIVE;
-
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
 
 	noSmooth();
@@ -24,34 +36,49 @@ function setup() {
 function draw() {
 	background(0);
 	scale(SCALE)
-	//translate(-WIDTH / 2, -HEIGHT / 2);
 
 	push();
-
-	applyCameraShake();
-
 	drawTiles();
+	applyCameraShake();
 
 	if(CURRENT_STATE === Gamestate.ALIVE) {
 		updateBullets();
 		updateEnemies();
-		
 		updateColliders();
-		
 		player.update();
 		gun.followPlayer(player.x + 10, player.y + 10);
 		gun.update();
 	}
 
-	drawCursor();
+	if(CURRENT_STATE === Gamestate.DEAD) {
+		imageMode(CENTER);
 
-	drawUIElements();
+		image(startImg, startButton.x + startButton.w / 2, startButton.y + startButton.h / 2, startButton.w, startButton.h);
+		image(quitImg, quitButton.x + quitButton.w / 2, quitButton.y + quitButton.h / 2, quitButton.w, quitButton.h);
+	}
+
+	drawCursor();
 	
 	pop();
 }
 
 function mouseClicked() {
-	updateUIElements();
+
+	if (CURRENT_STATE === Gamestate.DEAD) {
+		
+		const mx = mouseX / SCALE;
+		const my = mouseY / SCALE;
+		
+		if (mx > startButton.x && mx < startButton.x + startButton.w && my > startButton.y && my < startButton.y + startButton.h) {
+			console.log("START clicked!");
+			CURRENT_STATE = Gamestate.ALIVE;
+		}
+
+		if (mx > quitButton.x && mx < quitButton.x + quitButton.w && my > quitButton.y && my < quitButton.y + quitButton.h) {
+			console.log("QUIT clicked!");
+			window.close();
+		}
+	}
 
 	if(CURRENT_STATE === Gamestate.ALIVE) {
 		scale(SCALE);
@@ -76,3 +103,4 @@ function drawCursor() {
   image(cursorImg, mouseX / SCALE, mouseY / SCALE, cursorImg.width * SCALE, cursorImg.height * SCALE);
   noCursor();
 }
+
