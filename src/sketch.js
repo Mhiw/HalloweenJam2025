@@ -1,14 +1,10 @@
 function spawnEnemies(count) {
 	for(let i = 0; i < count; i++) {
-		enemies.push(new Enemy(Math.random() * 400, Math.random() * 400, enemyImg));
+		enemies.push(new Enemy(Math.random() * WIDTH / SCALE, Math.random() * WIDTH / SCALE, enemyImg));
 	}
 }
 
 function setup() {
-	elements.push(new Button(0, 0, 100, 50, startBtnImg, startBtnImg, () => {
-		console.log("Yes");
-	}));
-	
 	CURRENT_STATE = Gamestate.ALIVE;
 
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
@@ -31,10 +27,10 @@ function draw() {
 	//translate(-WIDTH / 2, -HEIGHT / 2);
 
 	push();
-	
-	drawTiles();
 
 	applyCameraShake();
+
+	drawTiles();
 
 	if(CURRENT_STATE === Gamestate.ALIVE) {
 		updateBullets();

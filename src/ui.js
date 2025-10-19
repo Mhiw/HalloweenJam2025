@@ -33,7 +33,7 @@ class Button extends UIElement {
         super(x, y, w, h, onClick);
         this.imgUp = imgUp;
         this.imgDown = imgDown;
-    }
+    } 
 
     draw() {
         image(startBtnImg, this.x, this.y, this.w, this.h);
