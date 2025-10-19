@@ -7,7 +7,7 @@ class Player extends Entity {
 		this.gunImg = gunImg;
 		this.speed = 0.2;
 		this.velocity = new Velocity(0, 0);
-		this.healthbar = new Healthbar(100, () => {
+		this.healthbar = new Healthbar(4, () => {
 			startCameraShake(50, 3);
 			CURRENT_STATE = Gamestate.DEAD;
 		});
@@ -28,7 +28,7 @@ class Player extends Entity {
 				startCameraShake(100, 3);
 			}
 			if(tags[0] === "Enemy" || tags[0] === "Bullet") {
-				this.healthbar.damage(10);
+				this.healthbar.damage(1);
 			}
 		});
 	}
@@ -47,6 +47,8 @@ class Player extends Entity {
 		image(this.img, this.x, this.y, w, h);
 
 		image(shadowImg, this.x, this.y + 10, 24*SCALE, 24*SCALE);
+
+		this.healthbar.draw();
 	}
 
 	move() {

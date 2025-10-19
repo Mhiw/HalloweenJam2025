@@ -14,6 +14,7 @@ let gunImg;
 let cursorImg;
 let enemyImg;
 let shadowImg;
+let healthbarImgs = [];
 
 // Tiles:
 
@@ -33,6 +34,14 @@ function preloadAssets(){
     cursorImg = loadImage("assets/Cursor.png");
     enemyImg = loadImage("assets/enemies/Eye.png");
     shadowImg = loadImage("assets/shadow.png");
+    healthbarImgs = [
+        loadImage("assets/healthBar0.png"),
+        loadImage("assets/healthBar1.png"),
+        loadImage("assets/healthBar2.png"),
+        loadImage("assets/healthBar3.png"),
+        loadImage("assets/healthBar4.png"),
+    ]
+
 
     // Tiles:
 

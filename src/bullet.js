@@ -29,7 +29,7 @@ class Bullet extends Entity {
 				bounceSound.play();
 				startCameraShake(50, 3);
 			}
-			if(tags[0] === "Enemy") {
+			if(tags[0] === "Enemy" || tags[0] === "Player") {
 				const index = bullets.indexOf(this);
 				if(index > -1) {
 					bullets.splice(index, 1);
