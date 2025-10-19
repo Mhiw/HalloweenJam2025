@@ -13,8 +13,19 @@ class Bullet extends Entity {
 		this.velocity = new Velocity(dx, dy);
 		this.speed = 0.2;
 		this.immuneTimer = 100;
+		this.bounces = 0;
 		this.collider = new Collider(x, y, 16, 8, ["Bullet"], (tags) => {
 			if(tags[0] === "Static") {
+				this.bounces += 1;
+
+				if(this.bounces >= 5) {
+					const index = bullets.indexOf(this);
+					if(index > -1) {
+						bullets.splice(index, 1);
+						this.collider.remove();
+					}
+				}
+
 				this.collider.disabled = true;
 				if(tags[1] === "Vertical") {
 					this.x -= this.velocity.dx * this.collider.w * 2;
