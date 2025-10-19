@@ -29,6 +29,7 @@ class Player extends Entity {
 			}
 			if(tags[0] === "Enemy" || tags[0] === "Bullet") {
 				this.healthbar.damage(1);
+				
 			}
 		});
 	}

@@ -3,4 +3,4 @@ const Gamestate = {
     DEAD: 1,
 };
 
-let CURRENT_STATE = Gamestate.ALIVE;
+let CURRENT_STATE = Gamestate.DEAD;
