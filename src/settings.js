@@ -5,7 +5,6 @@ const SCALE = 2;
 const WIDTH = 640;
 const HEIGHT = 360;
 
-
 // Asset Imports:
 
 let playerImg;
@@ -41,7 +40,6 @@ function preloadAssets(){
         loadImage("assets/healthBar3.png"),
         loadImage("assets/healthBar4.png"),
     ]
-
 
     // Tiles:
 

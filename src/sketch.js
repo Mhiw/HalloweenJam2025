@@ -8,7 +8,7 @@ function setup() {
 	CURRENT_STATE = Gamestate.ALIVE;
 
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
-	
+
 	noSmooth();
 
 	loadLevel(level1);
@@ -24,6 +24,7 @@ function setup() {
 function draw() {
 	background(0);
 	scale(SCALE)
+	//translate(-WIDTH / 2, -HEIGHT / 2);
 
 	push();
 	
