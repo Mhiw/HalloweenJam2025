@@ -5,7 +5,10 @@ function spawnEnemies(count) {
 }
 
 function setup() {
+	CURRENT_STATE = Gamestate.ALIVE;
+
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
+	
 	noSmooth();
 
 	loadLevel(level1);
@@ -23,22 +26,25 @@ function draw() {
 	scale(SCALE)
 
 	push();
-	applyCameraShake();
-
+	
 	drawTiles();
 
-	updateBullets();
-	updateEnemies();
-	
-	updateColliders();
-	
-	player.update();
-	gun.followPlayer(player.x + 10, player.y + 10);
-	gun.update();
+	if(CURRENT_STATE === Gamestate.ALIVE) {
+		applyCameraShake();
+
+		updateBullets();
+		updateEnemies();
+		
+		updateColliders();
+		
+		player.update();
+		gun.followPlayer(player.x + 10, player.y + 10);
+		gun.update();
+	}
+
 	drawCursor();
-
+	
 	pop();
-
 }
 
 function mouseClicked() {
