@@ -5,6 +5,10 @@ function spawnEnemies(count) {
 }
 
 function setup() {
+	elements.push(new Button(0, 0, 100, 50, startBtnImg, startBtnImg, () => {
+		console.log("Yes");
+	}));
+	
 	CURRENT_STATE = Gamestate.ALIVE;
 
 	createCanvas(WIDTH*SCALE, HEIGHT*SCALE);
@@ -44,11 +48,15 @@ function draw() {
 	}
 
 	drawCursor();
+
+	drawUIElements();
 	
 	pop();
 }
 
 function mouseClicked() {
+	updateUIElements();
+
 	if(CURRENT_STATE === Gamestate.ALIVE) {
 		scale(SCALE);
 		

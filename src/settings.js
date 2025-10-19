@@ -14,6 +14,7 @@ let cursorImg;
 let enemyImg;
 let shadowImg;
 let healthbarImgs = [];
+let startBtnImg;
 
 // Tiles:
 
@@ -39,7 +40,8 @@ function preloadAssets(){
         loadImage("assets/healthBar2.png"),
         loadImage("assets/healthBar3.png"),
         loadImage("assets/healthBar4.png"),
-    ]
+    ];
+    startBtnImg = loadImage("assets/start.png");
 
     // Tiles:
 
